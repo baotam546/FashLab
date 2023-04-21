@@ -33,5 +33,16 @@ FashLab are used by a diverse range of individuals, including:
 - Recommendations by category
 ## Design
 ### **SiteMap**
+![images](/images/sitemap.png)
 ### **Wireframe**
-### **Database Design**
+<p>
+  <img src="./images/1.png" width="30%">
+  <img src="./images/2.png" width="30%">
+  <img src="./images/3.png" width="30%">
+</p>
+<p>
+  <img src="./images/4.png" width="30%">
+  <img src="./images/5.png" width="30%">
+</p>
+
+### **Database**
