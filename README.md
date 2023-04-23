@@ -25,11 +25,11 @@ FashLab are used by a diverse range of individuals, including:
 7. Consumers who prefer the convenience of shopping from home, without the crowds and long lines of physical stores.
 8. International shoppers who are interested in buying clothes from brands that are not available in their country.
 ### Features
-- Customer can create account / log in to the website to purchase and view the order 
-- Search item by name
-- Sort products 
-- Cart, Add to Cart, View Cart
-- Recommendations by category
+- Customer can create account / log in to the website to purchase and view the order.
+- Search item by name, category like shirt, pants, male clothes, female clothes.
+- Sort products by category like shirt, pants, male clothes, female clothes.
+- Users can access to the item detail to view the price, color, size.
+- Recommendations by category, when the user is viewing a shirt the other items with the same category (shirt) will appear in the recommedations section.
 ## Design
 ### **SiteMap**
 ![images](/images/sitemap.png)
@@ -42,6 +42,7 @@ FashLab are used by a diverse range of individuals, including:
 <p>
   <img src="./images/4.png" width="30%">
   <img src="./images/5.png" width="30%">
+  <img src="./images/ProductDetail.png" width="30%">
 </p>
 
 ### **Database**
