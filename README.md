@@ -1,4 +1,3 @@
-"# prj301-se23sp3w-03" 
 # FashLab - Assigment PRJ301
 ## Table of Contents
 1. [Requirement](#Requirement)
