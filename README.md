@@ -35,14 +35,14 @@ FashLab are used by a diverse range of individuals, including:
 ![images](/images/sitemap.png)
 ### **Wireframe**
 <p>
-  <img src="./images/1.png" width="30%">
-  <img src="./images/2.png" width="30%">
-  <img src="./images/3.png" width="30%">
+  <img src="./images/HomePage.png" width="30%">
+  <img src="./images/AllProducts.png" width="30%">
+  <img src="./images/AllProducts2.png" width="30%">
 </p>
 <p>
-  <img src="./images/4.png" width="30%">
-  <img src="./images/5.png" width="30%">
-  <img src="./images/ProductDetail.png" width="30%">
+  <img src="./images/Information.png" width="30%">
+  <img src="./images/Collection.png" width="30%">
+  <img src="./images/ProductDetail.jpg" width="30%">
 </p>
 
 ### **Database**
