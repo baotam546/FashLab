@@ -16,7 +16,7 @@ public class OrderItems {
     int id;
     int orderId;
     int productId;
-    Date createAt;
+    Date createdAt;
 
     public OrderItems() {
     }
@@ -25,7 +25,7 @@ public class OrderItems {
         this.id = id;
         this.orderId = orderId;
         this.productId = productId;
-        this.createAt = createAt;
+        this.createdAt = createAt;
     }
 
     public int getId() {
@@ -52,16 +52,16 @@ public class OrderItems {
         this.productId = productId;
     }
 
-    public Date getCreateAt() {
-        return createAt;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     @Override
     public String toString() {
-        return "OrderItems{" + "id=" + id + ", orderId=" + orderId + ", productId=" + productId + ", createAt=" + createAt + '}';
+        return "OrderItems{" + "id=" + id + ", orderId=" + orderId + ", productId=" + productId + ", createAt=" + createdAt + '}';
     }
 }
