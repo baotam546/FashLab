@@ -47,3 +47,5 @@ FashLab are used by a diverse range of individuals, including:
 
 ### **Database**
 ![images](/images/databaseDiagram.png)
+
+## Conclusion and Discussion
