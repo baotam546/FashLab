@@ -35,8 +35,6 @@ public class LogInController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("txtemail");
         String password = request.getParameter("txtpassword");
-        
-        
         if(username == null || password == null){
             request.setAttribute("error", "email or password is incorrect or not found");
             request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -52,7 +50,7 @@ public class LogInController extends HttpServlet {
             }
         }else{
             request.setAttribute("error", "username or password is wrong");
-            request.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getServletContext().getRequestDispatcher("login.jsp").forward(request, response);
         }
         }
     }

@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author ACER
  */
 public class MainController extends HttpServlet {
+    
+    private static final String ERROR = "error.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,10 +32,26 @@ public class MainController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String action = request.getParameter("action");
-            
+            String url = ERROR;
+            try {
+                String ac = request.getParameter("action");
+                switch (ac) {
+                    case "Login":
+                        url = "LogInController";
+                        break;
+                    case "Logout":
+                        url = "LogoutServlet";
+                        break;
+
+                }
+            } catch (Exception e) {
+                log("Error at MainController " + e.toString());
+            } finally {
+                request.getRequestDispatcher(url).forward(request, response);
+            }
         }
     }
 
