@@ -5,8 +5,14 @@
  */
 package Controller;
 
+import DAO.CategoryDAO;
+import DAO.ProductDAO;
+import DTO.Category;
+import DTO.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,9 +36,19 @@ public class HomePageController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         String action = request.getParameter("action");
-        if(action.equals("Shop")){       
-                    request.getRequestDispatcher("AllItems.jsp").forward(request, response);
+        
+        ProductDAO productDao = new ProductDAO();
+        List<Product> productList = productDao.getAllProducts();
+        
+        CategoryDAO categoryDao = new CategoryDAO();
+        List<Category> categoryList = categoryDao.getCategoryList();
+                
+        if(action.equals("Shop")){   
+                request.setAttribute("productList", productList);
+                request.setAttribute("categoryList", categoryList);
+                request.getRequestDispatcher("AllItems.jsp").forward(request, response);
         }
     }
 

@@ -19,11 +19,20 @@ public class Product {
     int discountId;
     Date createdAt;
     int quantity;
+    String link;
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public Product() {
     }
 
-    public Product(int id, String name, int categoryId, double price, int discountId, Date createdAt, int quantity) {
+    public Product(int id, String name, int categoryId, double price, int discountId, Date createdAt, int quantity,String link) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
@@ -31,6 +40,7 @@ public class Product {
         this.discountId = discountId;
         this.createdAt = createdAt;
         this.quantity = quantity;
+        this.link=link;
     }
 
     public int getId() {
