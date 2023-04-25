@@ -21,10 +21,11 @@ import java.util.List;
 public class ProductDAO {
     public  List<Product> getProducts() {
         List<Product> list = new ArrayList<>();
+        String sql = "select * from Product ";
         Connection cn = null;
         try {
             cn = DBUtils.getConnection();
-            String sql = "select * from Product ";
+            
             PreparedStatement stm = cn.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {

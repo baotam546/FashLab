@@ -71,22 +71,22 @@
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
             <li class="active">
-                <form action="MainController" >
+                <form action="HomePageController" >
                     <input type=hidden name="action" value="Home">
                     <input type="submit" value="Home">
                 </form>
               
             </li>
             
-            <li><form action="MainController" >
+            <li><form action="HomePageController" >
                     <input type=hidden name="action" value="Shop">
                     <input type="submit" value="Shop">
                 </form></li>
-            <li><form action="MainController" >
+            <li><form action="HomePageController" >
                     <input type=hidden name="action" value="NewArrivals">
                     <input type="submit" value="New Arrivals">
                 </form></li>
-            <li><form action="MainController" >
+            <li><form action="HomePageController" >
                     <input type=hidden name="action" value="Contact">
                     <input type="submit" value="Contact">
                 </form></li>

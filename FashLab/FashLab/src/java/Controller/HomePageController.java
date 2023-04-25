@@ -16,9 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ACER
  */
-public class MainController extends HttpServlet {
-    
-    private static final String ERROR = "error.jsp";
+public class HomePageController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +31,9 @@ public class MainController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
-            String url = ERROR;
-            try {
-                if(action == "Shop"){       
+        if(action.equals("Shop")){       
                     request.getRequestDispatcher("AllItems.jsp").forward(request, response);
-                }
-            } catch (Exception e) {
-                log("Error at MainController " + e.toString());
-            } finally {
-                request.getRequestDispatcher(url).forward(request, response);
-            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
