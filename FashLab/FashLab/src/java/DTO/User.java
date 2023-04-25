@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author ACER
  */
 public class User {
+
     int id;
     String firstName;
     String lastName;
@@ -108,6 +109,10 @@ public class User {
     public void setRole(int role) {
         this.role = role;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", mobile=" + mobile + ", password=" + password + ", address=" + address + ", createdAt=" + createdAt + ", role=" + role + '}';
+    }
+
 }
