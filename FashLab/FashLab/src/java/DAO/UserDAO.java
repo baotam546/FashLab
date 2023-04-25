@@ -25,7 +25,7 @@ public class UserDAO {
         if (con != null) {
             String sql = "select id, firstName, lastName, email, mobile, password, address, createdAt, role "
                     + "from Clients "
-                    + "where id = 2 and password = 12345";
+                    + "where id = ? and password = ? COLLATE Latin1_General_CS_AS";
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             if (rs != null) {
