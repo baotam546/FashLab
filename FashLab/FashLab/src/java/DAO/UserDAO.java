@@ -18,7 +18,29 @@ import java.util.ArrayList;
  * @author ACER
  */
 public class UserDAO {
-
+    public static User login(String username, String password){
+        String sql = "select firstName, lastName, role "
+                    + "from Clients "
+                    + "where id = ? and password = ?";
+        try {
+            Connection con = DBUtils.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            
+            User user = new User();
+            user.setFirstName(rs.getString("firstName"));
+            user.setLastName(rs.getString("lastName"));
+            user.setRole(rs.getInt("role"));
+            return user;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
     public static ArrayList<User> getUsers() throws Exception {
         ArrayList<User> list = new ArrayList<>();
         Connection con = DBUtils.getConnection();

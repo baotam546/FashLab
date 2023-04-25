@@ -51,8 +51,8 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a href="#"><span class="icon icon-person"></span></a></li>
-                  <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
+                  <li><a href="/login.jsp"><span class="icon icon-person"></span></a></li>
+                 
                   <li>
                     <a href="cart.html" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
@@ -71,13 +71,25 @@
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
             <li class="active">
-              <a href="">Home</a>
-             
+                <form action="/MainController" >
+                    <input type=hidden name="action" value="Home">
+                    <input type="submit" value="Home">
+                </form>
+              
             </li>
             
-            <li><a href="">Shop</a></li>
-            <li><a href="#">New Arrivals</a></li>
-            <li><a href="">Contact</a></li>
+            <li><form action="/MainController" >
+                    <input type=hidden name="action" value="Shop">
+                    <input type="submit" value="Shop">
+                </form></li>
+            <li><form action="/MainController" >
+                    <input type=hidden name="action" value="NewArrivals">
+                    <input type="submit" value="New Arrivals">
+                </form></li>
+            <li><form action="/MainController" >
+                    <input type=hidden name="action" value="Contact">
+                    <input type="submit" value="Contact">
+                </form></li>
           </ul>
         </div>
       </nav>
@@ -135,7 +147,7 @@
           <div class="col-sm-6 col-md-6 col-lg-6 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
             <a class="block-2-item" href="#">
               <figure class="image">
-                <img src="images/women.jpg" alt="" class="img-fluid">
+                <img src="images/female1.jpg" alt="" class="img-fluid">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Collections</span>
@@ -147,7 +159,7 @@
           <div class="col-sm-6 col-md-6 col-lg-6 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
             <a class="block-2-item" href="#">
               <figure class="image">
-                <img src="images/men.jpg" alt="" class="img-fluid">
+                <img src="images/male1.jpg" alt="" class="img-fluid">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Collections</span>

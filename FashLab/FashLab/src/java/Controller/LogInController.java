@@ -5,18 +5,21 @@
  */
 package Controller;
 
+import DAO.UserDAO;
+import DTO.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author ACER
  */
-public class MainController extends HttpServlet {
+public class LogInController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,10 +33,27 @@ public class MainController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String action = request.getParameter("action");
-            
+        String username = request.getParameter("txtemail");
+        String password = request.getParameter("txtpassword");
+        
+        
+        if(username == null || password == null){
+            request.setAttribute("error", "email or password is incorrect or not found");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }else{
+        User user = UserDAO.login(username, password);
+        if(user != null){
+            HttpSession session = request.getSession(true);
+            session.setAttribute("currentUser", user);
+            if(user.getRole() == 0){
+            request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+            }else {
+                request.getRequestDispatcher("Admin.jsp").forward(request, response);
+            }
+        }else{
+            request.setAttribute("error", "username or password is wrong");
+            request.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+        }
         }
     }
 
