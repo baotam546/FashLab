@@ -83,18 +83,12 @@
       </nav>
     </header>
 
-    <div class="site-blocks-cover" style="background-image: url(images/banner5.jpg);" data-aos="fade">
+    <div class="site-blocks-cover" style="background-image: url(images/Slider_1.jpg);" data-aos="fade">
       <div class="container">
-        <div class="row align-items-start align-items-md-center justify-content-end">
-          <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-            <h1 class="mb-2">Finding Your Perfect Shoes</h1>
-            <div class="intro-text text-center text-md-left">
-              <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
-              <p>
-                <a href="#" class="btn btn-sm btn-primary">Shop Now</a>
-              </p>
-            </div>
-          </div>
+        <div class="row align-items-start align-items-md-center justify-content-center">
+          
+            
+          
         </div>
       </div>
     </div>
@@ -138,7 +132,7 @@
     <div class="site-section site-blocks-2">
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
+          <div class="col-sm-6 col-md-6 col-lg-6 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
             <a class="block-2-item" href="#">
               <figure class="image">
                 <img src="images/women.jpg" alt="" class="img-fluid">
@@ -149,18 +143,8 @@
               </div>
             </a>
           </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-            <a class="block-2-item" href="#">
-              <figure class="image">
-                <img src="images/children.jpg" alt="" class="img-fluid">
-              </figure> 
-              <div class="text">
-                <span class="text-uppercase">Collections</span>
-                <h3>Children</h3>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
+          
+          <div class="col-sm-6 col-md-6 col-lg-6 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
             <a class="block-2-item" href="#">
               <figure class="image">
                 <img src="images/men.jpg" alt="" class="img-fluid">
