@@ -28,7 +28,7 @@ public class ProductDAO {
             PreparedStatement stm = cn.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                Product p = new Product(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getBoolean(5));
+                Product p = new Product(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), rs.getInt(5), rs.getDate(6), rs.getInt(7) );
                 list.add(p);
             }
             return list;
@@ -58,4 +58,6 @@ public class ProductDAO {
         }
         return result;
     } 
+    
+    
 }
