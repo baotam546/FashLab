@@ -1,3 +1,10 @@
+<%-- 
+    Document   : HomePage
+    Created on : Apr 25, 2023, 6:29:54 AM
+    Author     : ACER
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,7 +44,7 @@
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">Shoppers</a>
+                <a href="index.html" class="js-logo-clone">FashLab</a>
               </div>
             </div>
 
@@ -63,40 +70,20 @@
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has-children active">
-              <a href="index.html">Home</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-                <li class="has-children">
-                  <a href="#">Sub Menu</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Menu One</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li><a href="#">Menu Three</a></li>
-                  </ul>
-                </li>
-              </ul>
+            <li class="active">
+              <a href="">Home</a>
+             
             </li>
-            <li class="has-children">
-              <a href="about.html">About</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-              </ul>
-            </li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="#">Catalogue</a></li>
+            
+            <li><a href="">Shop</a></li>
             <li><a href="#">New Arrivals</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="">Contact</a></li>
           </ul>
         </div>
       </nav>
     </header>
 
-    <div class="site-blocks-cover" style="background-image: url(images/hero_1.jpg);" data-aos="fade">
+    <div class="site-blocks-cover" style="background-image: url(images/banner5.jpg);" data-aos="fade">
       <div class="container">
         <div class="row align-items-start align-items-md-center justify-content-end">
           <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
@@ -110,6 +97,8 @@
           </div>
         </div>
       </div>
+    </div>
+      
     </div>
 
     <div class="site-section site-section-sm site-blocks-1">
@@ -164,7 +153,7 @@
             <a class="block-2-item" href="#">
               <figure class="image">
                 <img src="images/children.jpg" alt="" class="img-fluid">
-              </figure>
+              </figure> 
               <div class="text">
                 <span class="text-uppercase">Collections</span>
                 <h3>Children</h3>

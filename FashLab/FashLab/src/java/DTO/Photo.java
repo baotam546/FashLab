@@ -10,5 +10,7 @@ package DTO;
  * @author ACER
  */
 public class Photo {
+    int id;
+    String name;
     
 }
