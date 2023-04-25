@@ -24,7 +24,7 @@ public class ProductDAO {
         Connection cn = null;
         try {
             cn = DBUtils.getConnection();
-            String sql = "select * from Product where status = 1";
+            String sql = "select * from Product ";
             PreparedStatement stm = cn.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {

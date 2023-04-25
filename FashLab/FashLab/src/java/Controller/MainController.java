@@ -37,15 +37,8 @@ public class MainController extends HttpServlet {
             String action = request.getParameter("action");
             String url = ERROR;
             try {
-                String ac = request.getParameter("action");
-                switch (ac) {
-                    case "Login":
-                        url = "LogInController";
-                        break;
-                    case "Logout":
-                        url = "LogoutServlet";
-                        break;
-
+                if(action == "Shop"){
+                    request.getRequestDispatcher("AllItems.jsp").forward(request, response);
                 }
             } catch (Exception e) {
                 log("Error at MainController " + e.toString());
