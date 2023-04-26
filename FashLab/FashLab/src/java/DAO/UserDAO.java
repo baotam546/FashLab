@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -55,7 +57,7 @@ public class UserDAO {
         if (con != null) {
             String sql = "select id, firstName, lastName, email, mobile, password, address, createdAt, role "
                     + "from Clients "
-                    + "where id = ? and password = ? COLLATE Latin1_General_CS_AS";
+                    + "where email = ? and password = ? COLLATE Latin1_General_CS_AS";
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             if (rs != null) {
@@ -69,7 +71,7 @@ public class UserDAO {
                     String address = rs.getString("address");
                     Date createdAt = rs.getDate("createdAt");
                     int role = rs.getInt("role");
-                    User us = new User(id, fistname, lastname, email, mobile, pwd, address, createdAt, role);
+                    User us = new User(id, fistname, lastname, email, mobile, pwd, address);
                     list.add(us);
                 }
                 rs.close();
@@ -82,11 +84,47 @@ public class UserDAO {
     
     
 
-    public static void main(String[] args) throws Exception {
-        ArrayList<User> list = UserDAO.getUsers();
-        for (User user : list) {
-            System.out.println(user);
+    public boolean insertUser(User user) {
+        Connection con = null;
+        PreparedStatement pst = null;
+        String sql = "INSERT INTO Clients (firstName, lastName, email, password, mobile, address, createdAt) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try {
+            con = DBUtils.getConnection();
+            pst = con.prepareStatement(sql);
+            pst.setString(1, user.getFirstName());
+            pst.setString(2, user.getLastName());
+            pst.setString(3, user.getEmail());
+            pst.setString(4, user.getPassword());
+            pst.setString(5, user.getMobile());
+            pst.setString(6, user.getAddress());
+            pst.setTimestamp(7, new Timestamp(user.getCreatedAt().getTime()));
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Insert account error: " + ex.getMessage());
+            return false;
+        } finally {
 
         }
+        return true;
     }
+
+    public static void main(String[] args) throws Exception {
+        User user = new User(1, "John", "Doe", "johndoe@gmail.com", "123456789", "password", "123 Main St");
+        UserDAO dao = new UserDAO();
+        boolean result = dao.insertUser(user);
+        if (result) {
+            System.out.println("User inserted successfully!");
+        } else {
+            System.out.println("Failed to insert user.");
+        }
+    }
+
+//    public static void main(String[] args) throws Exception {
+//        ArrayList<User> list = UserDAO.getUsers();
+//        for (User user : list) {
+//            System.out.println(user);
+//
+//        }
+//    }
 }

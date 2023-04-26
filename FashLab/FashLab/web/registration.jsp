@@ -32,20 +32,28 @@
                         <div class="card-body">
                             <form action="MainController" method="POST" class="register-form" id="register-form"> 
                                 <div class="form-group">
-                                    <label for="name" class="small mb-1">Name</label>
-                                    <input type="text" name="txtname" id="name" class="form-control py-4" placeholder="Enter your name" />
+                                    <label for="name" class="small mb-1">First Name</label>
+                                    <input type="text" name="txtfirstname" id="firstname" class="form-control py-4" placeholder="Enter your first name" required=""/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="small mb-1">Last Name</label>
+                                    <input type="text" name="txtlastname" id="lastname" class="form-control py-4" placeholder="Enter your last name" required=""/>
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="small mb-1">Email</label>
-                                    <input type="email" name="txtemail" id="email" class="form-control py-4" placeholder="Enter your email" />
+                                    <input type="email" name="txtemail" id="email" class="form-control py-4" placeholder="Enter your email" required="" />
                                 </div>
                                 <div class="form-group">
                                     <label for="pass" class="small mb-1">Password</label>
-                                    <input type="password" name="txtpassword" id="pass" class="form-control py-4" placeholder="Enter your password" />
+                                    <input type="password" name="txtpassword" id="pass" class="form-control py-4" placeholder="Enter your password" required=""/>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone" class="small mb-1">Phone Number</label>
-                                    <input type="phone" name="txtphone" id="phone" class="form-control py-4" placeholder="Enter your phone number" />
+                                    <input type="phone" name="txtphone" id="phone" class="form-control py-4" placeholder="Enter your phone number" required=""/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address" class="small mb-1">Address</label>
+                                    <input type="text" name="txtaddress" id="address" class="form-control py-4" placeholder="Enter your address" required=""/>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
