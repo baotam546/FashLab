@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.NamingException;
 
 
@@ -53,14 +55,16 @@ public class OrderItemsDAO {
                     Date createAt = rs.getDate("createAt");
                     int quantity = rs.getInt("quantity");
                     
-                    Product dto = new Product(
-                            id,name,categoryId,price,discountId,createAt,quantity);
+//                    Product dto = new Product (
+//                            id,name,categoryId,price,discountId,createAt,quantity);
                     if (this.productList == null){
                         this.productList = new ArrayList<>();
                     }//end product list has NOT existed
-                    this.productList.add(dto);
+//                    this.productList.add(dto);
                 }//end traverse rs to EOF
             }//end connection
+        } catch (Exception ex) {
+            Logger.getLogger(OrderItemsDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (rs != null){
                 rs.close();

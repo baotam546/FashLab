@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class MainController extends HttpServlet {
     
-    private static final String ERROR = "error.jsp";
+    private static final String ERROR = "login.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,6 +38,9 @@ public class MainController extends HttpServlet {
                 if(action.equals("Shop")){       
                     request.getRequestDispatcher("AllItems.jsp").forward(request, response);
                 }
+                else if (action.equals("Login")) {
+                    url = "LoginServlet";
+                }                        
             } catch (Exception e) {
                 log("Error at MainController " + e.toString());
             } finally {

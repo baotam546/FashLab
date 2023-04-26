@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ACER
  */
-public class LogInController extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,25 +33,25 @@ public class LogInController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("txtemail");
-        String password = request.getParameter("txtpassword");
-        if(username == null || password == null){
-            request.setAttribute("error", "email or password is incorrect or not found");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else{
-        User user = UserDAO.login(username, password);
-        if(user != null){
-            HttpSession session = request.getSession(true);
-            session.setAttribute("currentUser", user);
-            if(user.getRole() == 0){
-            request.getRequestDispatcher("HomePage.jsp").forward(request, response);
-            }else {
-                request.getRequestDispatcher("Admin.jsp").forward(request, response);
+
+        try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            String email = request.getParameter("txtemail");
+            String password = request.getParameter("txtpassword");
+            boolean isValidUser = UserDAO.checkLogin(email, password);
+            if (!email.isEmpty() && !password.isEmpty() && isValidUser) {
+                HttpSession session = request.getSession();
+                session.setAttribute("loginUser", email);
+                // chuyen sang page cua user
+                response.sendRedirect("HomePage.jsp");
+            } else {
+                String mess = "Incorrect UserID and Password";
+                request.setAttribute("mess", mess);
+
             }
-        }else{
-            request.setAttribute("error", "username or password is wrong");
-            request.getServletContext().getRequestDispatcher("login.jsp").forward(request, response);
-        }
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
