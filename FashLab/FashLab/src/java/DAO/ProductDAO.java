@@ -8,6 +8,7 @@ package DAO;
 import DBUtils.DBUtils;
 import DTO.Product;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ import java.util.List;
 public class ProductDAO {
     public static List<Product> getAllProducts() {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT  p1.id,p1.name,p1.categoryId, p1.price , p1.discountId,p1.createdAt,p1.quantity,p2.link" +
+        String sql = "SELECT  p1.id,p1.name,p1.categoryId, p1.price , p1.discountId,p1.createdAt,p1.quantity, p2.link" +
                      "  FROM Product p1  left join ProductsPhoto p2 on p1.id = p2.userId ";
         Connection cn = null;
         try {
@@ -37,6 +38,39 @@ public class ProductDAO {
         }
         return list;
 }
+    
+    public Product getProduct(int productId){
+        Product product = null;
+
+        try {
+            Connection cn = DBUtils.getConnection();
+            if (cn != null) {
+                String sql = "SELECT  p1.id,p1.name,p1.categoryId, p1.price , p1.discountId,p1.createdAt,p1.quantity, p2.link" +
+                     "  FROM Product p1 left join ProductsPhoto p2 on p1.id = p2.userId WHERE p1.id = ?";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setInt(1, productId);
+                ResultSet rs = pst.executeQuery();
+                if (rs != null) {
+                    while (rs.next()) {
+                        int id = rs.getInt("id");
+                        String name = rs.getString("name");
+                        int categoryId = rs.getInt("categoryId");
+                        double price = rs.getDouble("price");
+                        int discountId = rs.getInt("discountId");
+                        Date createdAt = rs.getDate("createdAt");
+                        int quantity = rs.getInt("quantity");
+                        String link = rs.getString("link");
+                        product = new Product(id, name, categoryId, price, discountId, createdAt, quantity, link);
+      
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return product;
+    }
+    
     public boolean deleteProduct(String productID) throws SQLException{
         boolean result = false;
         Connection conn = null;
@@ -63,10 +97,7 @@ public class ProductDAO {
     
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
-        List<Product> list = p.getAllProducts();
-        for (Product product : list) {
-            System.out.println(product);
-        }
+        System.out.print(p.getProduct(2));
     }
     
 }

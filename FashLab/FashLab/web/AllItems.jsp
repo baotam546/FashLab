@@ -150,6 +150,13 @@
                     <h3><a href="shop-single.html">${o.name}</a></h3>
                     <p class="mb-0">Finding perfect t-shirt</p>
                     <p class="text-primary font-weight-bold">${o.price}</p>
+                    <div>
+                        <form action="AddtocartServlet" method="" >
+                            <input type="hidden" name="id" value="${o.id}"/>
+                            <input type="number" min="1" value="1" name="amount" />
+                            <input type="submit" value="Add to cart" name="action"/>
+                        </form> 
+                    </div>
                   </div>
                 </div>
               </div>
