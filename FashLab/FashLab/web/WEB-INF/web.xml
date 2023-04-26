@@ -16,16 +16,8 @@
         <servlet-class>Controller.DetailsItemsController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CategoryController</servlet-name>
-        <servlet-class>Controller.CategoryController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CreateAccountServlet</servlet-name>
         <servlet-class>Controller.CreateAccountServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SearchController</servlet-name>
-        <servlet-class>Controller.SearchController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddtocartServlet</servlet-name>
@@ -38,6 +30,14 @@
     <servlet>
         <servlet-name>ListProduct</servlet-name>
         <servlet-class>Controller.ListProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoryController</servlet-name>
+        <servlet-class>Controller.CategoryController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchController</servlet-name>
+        <servlet-class>Controller.SearchController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -52,16 +52,8 @@
         <url-pattern>/DetailsItemsController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CategoryController</servlet-name>
-        <url-pattern>/CategoryController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>CreateAccountServlet</servlet-name>
         <url-pattern>/CreateAccountServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchController</servlet-name>
-        <url-pattern>/SearchController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddtocartServlet</servlet-name>
@@ -74,6 +66,14 @@
     <servlet-mapping>
         <servlet-name>ListProduct</servlet-name>
         <url-pattern>/ListProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoryController</servlet-name>
+        <url-pattern>/CategoryController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchController</servlet-name>
+        <url-pattern>/SearchController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

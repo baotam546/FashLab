@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ACER
  */
-public class ListProduct extends HttpServlet {
+public class SearchController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,28 +35,14 @@ public class ListProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String indexPage = request.getParameter("index");
-        String cid = request.getParameter("cid");
-        if(indexPage == null){
-            indexPage ="1";
-        }
-        int index = Integer.parseInt(indexPage);
-        int count = ProductDAO.getTotalProduct();
-        int endPage = count/10;
-        if(count % 9 != 0 ){   
-            endPage++;
-        }
-        request.setAttribute("endP", endPage);
+        String txt= request.getParameter("txt");
         
-        List<Product> productList = ProductDAO.pagingProduct(index);
+        List<Product> productList = ProductDAO.getAllProductsBySearch(txt);
+        CategoryDAO categoryDao = new CategoryDAO();
+        List<Category> categoryList = categoryDao.getCategoryList();
         request.setAttribute("productList", productList);
-        
-       
-        List<Category> categoryList = CategoryDAO.getCategoryList();
-        request.setAttribute("categoryList", categoryList);
-        
-        request.getRequestDispatcher("AllItems.jsp").forward(request, response);
-        
+                request.setAttribute("categoryList", categoryList);
+                request.getRequestDispatcher("AllItems.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
