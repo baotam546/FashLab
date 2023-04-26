@@ -33,6 +33,7 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String email = request.getParameter("txtemail");
@@ -46,6 +47,7 @@ public class LoginServlet extends HttpServlet {
             } else {
                 String mess = "Incorrect UserID and Password";
                 request.setAttribute("mess", mess);
+
             }
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } catch (Exception e) {

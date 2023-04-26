@@ -31,70 +31,7 @@
   <body>
   
   <div class="site-wrap">
-    <header class="site-navbar" role="banner">
-      <div class="site-navbar-top">
-        <div class="container">
-          <div class="row align-items-center">
-
-            <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <form action="" class="site-block-top-search">
-                <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search">
-              </form>
-            </div>
-
-            <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
-              <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">FashLab</a>
-              </div>
-            </div>
-
-            <div class="col-6 col-md-4 order-3 order-md-3 text-right">
-              <div class="site-top-icons">
-                <ul>
-                  <li><a href="#"><span class="icon icon-person"></span></a></li>
-                  <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
-                  <li>
-                    <a href="cart.html" class="site-cart">
-                      <span class="icon icon-shopping_cart"></span>
-                      <span class="count">2</span>
-                    </a>
-                  </li> 
-                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
-                </ul>
-              </div> 
-            </div>
-
-          </div>
-        </div>
-      </div> 
-      <nav class="site-navigation text-right text-md-center" role="navigation">
-        <div class="container">
-          <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="active">
-                <form action="/MainController" >
-                    <input type=hidden name="action" value="Home">
-                    <input type="submit" value="Home">
-                </form>
-              
-            </li>
-            
-            <li><form action="/MainController" >
-                    <input type=hidden name="action" value="Shop">
-                    <input type="submit" value="Shop">
-                </form></li>
-            <li><form action="/MainController" >
-                    <input type=hidden name="action" value="NewArrivals">
-                    <input type="submit" value="New Arrivals">
-                </form></li>
-            <li><form action="/MainController" >
-                    <input type=hidden name="action" value="Contact">
-                    <input type="submit" value="Contact">
-                </form></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+      <jsp:include page="Menu.jsp"></jsp:include>
 
     <div class="bg-light py-3">
       <div class="container">
@@ -144,10 +81,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href=""><img src="${o.link}" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="DetailsItemsController?pid=${o.id}"><img src="${o.link}" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">${o.name}</a></h3>
+                    <h3><a href="DetailsItemsController?pid=${o.id}">${o.name}</a></h3>
                     <p class="mb-0">Finding perfect t-shirt</p>
                     <p class="text-primary font-weight-bold">${o.price}</p>
                     <div>
@@ -189,7 +126,7 @@
               <c:forEach var="o" items="${categoryList}">
               
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" class="d-flex"><span>${o.name}</span> </a></li>
+                <li class="mb-1"><a href="CategoryController?cid=${o.id}" class="d-flex"><span>${o.name}</span> </a></li>
                 
                 
               </ul>
