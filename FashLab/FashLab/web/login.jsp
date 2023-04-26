@@ -26,7 +26,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <h2 class="text-center mb-4">Login</h2>
-                    <form action="MainController" method="post">
+                    <form action="LoginServlet" method="post">
                         <div class="form-group">
                             <label>Email</label>
                             <input type="email" class="form-control" name="txtemail" required="">

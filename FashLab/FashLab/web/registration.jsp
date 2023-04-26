@@ -30,7 +30,7 @@
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                         <div class="card-body">
-                            <form action="MainController" method="POST" class="register-form" id="register-form"> 
+                            <form action="CreateAccountServlet" method="POST" class="register-form" id="register-form"> 
                                 <div class="form-group">
                                     <label for="name" class="small mb-1">First Name</label>
                                     <input type="text" name="txtfirstname" id="firstname" class="form-control py-4" placeholder="Enter your first name" required=""/>
