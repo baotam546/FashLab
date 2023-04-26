@@ -37,6 +37,44 @@ public class ProductDAO {
         }
         return list;
 }
+    
+    public static List<Product> getAllProductsByCategory(int cateId) {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT  p1.id,p1.name,p1.categoryId, p1.price , p1.discountId,p1.createdAt,p1.quantity,p2.link" +
+                     "  FROM Product p1  left join ProductsPhoto p2 on p1.id = p2.userId WHERE categoryId = ? ";
+        Connection cn = null;
+        try {
+            Connection con = DBUtils.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, cateId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Product(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), rs.getInt(5), rs.getDate(6), rs.getInt(7),rs.getString(8)));
+            }
+            
+        } catch (Exception e) {
+        }
+        return list;
+}
+    
+    public Product getSingleProduct(int id){
+        Product p = null;
+        try {
+            String sql = "SELECT  p1.id,p1.name,p1.categoryId, p1.price , p1.discountId,p1.createdAt,p1.quantity,p2.link" +
+                     "  FROM Product p1  left join ProductsPhoto p2 on p1.id = p2.userId "
+                    + "WHERE id = ?";
+            
+            Connection con = DBUtils.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                 p = new Product(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), rs.getInt(5), rs.getDate(6), rs.getInt(7), rs.getString(8));
+            }
+        } catch (Exception e) {
+        }
+        return p;
+    }
     public boolean deleteProduct(String productID) throws SQLException{
         boolean result = false;
         Connection conn = null;
@@ -59,14 +97,32 @@ public class ProductDAO {
         }
         return result;
     } 
-    
+    public static List<Product> getAllProductsBySearch(String txt) {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT  p1.id,p1.name,p1.categoryId, p1.price , p1.discountId,p1.createdAt,p1.quantity,p2.link" +
+                     "  FROM Product p1  left join ProductsPhoto p2 on p1.id = p2.userId WHERE name like  ";
+        Connection cn = null;
+        try {
+            Connection con = DBUtils.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,"%"+ txt + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Product(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), rs.getInt(5), rs.getDate(6), rs.getInt(7),rs.getString(8)));
+            }
+            
+        } catch (Exception e) {
+        }
+        return list;
+}
     
     public static void main(String[] args) {
-        ProductDAO p = new ProductDAO();
-        List<Product> list = p.getAllProducts();
+        
+        List<Product> list = ProductDAO.getAllProducts();
         for (Product product : list) {
             System.out.println(product);
         }
     }
+
     
 }

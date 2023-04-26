@@ -37,7 +37,7 @@ public class LogInController extends HttpServlet {
         String password = request.getParameter("txtpassword");
         if(username == null || password == null){
             request.setAttribute("error", "email or password is incorrect or not found");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }else{
         User user = UserDAO.login(username, password);
         if(user != null){

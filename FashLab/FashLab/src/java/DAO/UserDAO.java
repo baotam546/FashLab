@@ -71,6 +71,8 @@ public class UserDAO {
         }
         return list;
     }
+    
+    
 
     public static void main(String[] args) throws Exception {
         ArrayList<User> list = UserDAO.getUsers();

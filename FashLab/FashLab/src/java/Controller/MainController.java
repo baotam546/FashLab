@@ -35,7 +35,7 @@ public class MainController extends HttpServlet {
         String action = request.getParameter("action");
             String url = ERROR;
             try {
-                if(action == "Shop"){       
+                if(action.equals("Shop")){       
                     request.getRequestDispatcher("AllItems.jsp").forward(request, response);
                 }
             } catch (Exception e) {
