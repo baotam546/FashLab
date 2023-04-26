@@ -8,8 +8,8 @@
         <servlet-class>Controller.MainController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LogInController</servlet-name>
-        <servlet-class>Controller.LogInController</servlet-class>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>Controller.LoginServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>HomePageController</servlet-name>
@@ -20,8 +20,8 @@
         <url-pattern>/MainController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>LogInController</servlet-name>
-        <url-pattern>/LogInController</url-pattern>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomePageController</servlet-name>

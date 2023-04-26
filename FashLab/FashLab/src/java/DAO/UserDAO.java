@@ -18,29 +18,37 @@ import java.util.ArrayList;
  * @author ACER
  */
 public class UserDAO {
-    public static User login(String username, String password){
-        String sql = "select firstName, lastName, role "
-                    + "from Clients "
-                    + "where id = ? and password = ?";
+
+    public static boolean checkLogin(String email, String password) throws Exception {
+        boolean isValid = false;
         try {
             Connection con = DBUtils.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, username);
-            ps.setString(2, password);
-            
-            ResultSet rs = ps.executeQuery();
-            
-            
-            User user = new User();
-            user.setFirstName(rs.getString("firstName"));
-            user.setLastName(rs.getString("lastName"));
-            user.setRole(rs.getInt("role"));
-            return user;
+            if (con != null) {
+                String sql = "select email, password, role "
+                        + "from Clients "
+                        + "where email = ? and password = ? ";
+                PreparedStatement pst = con.prepareStatement(sql);
+                pst.setString(1, email);
+                pst.setString(2, password);
+                ResultSet rs = pst.executeQuery();
+                if (rs != null) {
+                    while (rs.next()) {
+                        if (rs.getString("email").equals(email) && rs.getString("password").equals(password)) {
+                            isValid = true;
+                            break;
+                        }
+                    }
+                    rs.close();
+                    pst.close();
+                }
+                con.close();
+            }
         } catch (Exception e) {
+            e.printStackTrace();
         }
-        return null;
+        return isValid;
     }
-    
+
     public static ArrayList<User> getUsers() throws Exception {
         ArrayList<User> list = new ArrayList<>();
         Connection con = DBUtils.getConnection();

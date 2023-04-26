@@ -14,11 +14,19 @@
         <title>Login</title>
     </head>
     <body>
+        <%
+            String mess = (String) request.getAttribute("mess");
+            if (mess != null) {
+        %>
+        <div style="color: red"><%= mess%></div>
+        <%
+            }
+        %>
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <h2 class="text-center mb-4">Login</h2>
-                    <form action="LogInController" method="post">
+                    <form action="MainController" method="post">
                         <div class="form-group">
                             <label>Email</label>
                             <input type="email" class="form-control" name="txtemail" required="">
