@@ -26,7 +26,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String firstName, String lastName, String email, String mobile, String password, String address, Date createdAt, int role) {
+    public User(int id, String firstName, String lastName, String email, String mobile, String password, String address ) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,7 +34,7 @@ public class User {
         this.mobile = mobile;
         this.password = password;
         this.address = address;
-        this.createdAt = createdAt;
+        this.createdAt = new Date(0);
         this.role = role;
     }
 

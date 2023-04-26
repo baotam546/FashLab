@@ -1,12 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package Controller;
 
+import DAO.UserDAO;
+import DTO.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,11 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ACER
+ * @author ThanhMai
  */
-public class MainController extends HttpServlet {
-
-    private static final String ERROR = "login.jsp";
+public class CreateAccountServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,21 +34,23 @@ public class MainController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String action = request.getParameter("action");
-        String url = ERROR;
-        try {
-            if (action == "Shop") {
-                request.getRequestDispatcher("AllItems.jsp").forward(request, response);
-            } else if (action.equals("Login")) {
-                url = "LoginServlet";
-            } else if (action.equals("Sign up")) {
-                url = "CreateAccountServlet";
+        try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            String firstname = request.getParameter("txtfirstname");
+            String lastname = request.getParameter("txtlastname");
+            String email = request.getParameter("txtemail");
+            String password = request.getParameter("txtpassword");
+            String phone = request.getParameter("txtphone");
+            String address = request.getParameter("txtaddress");
+            Date createdAt = new Date(0);
+            int role = 0;
+            User user = new User(role, firstname, lastname, email, phone, password, address);
+            UserDAO dao = new UserDAO();
+            dao.insertUser(user);
+            request.getRequestDispatcher("HomePage.jsp").forward(request, response);
 
-            }
         } catch (Exception e) {
-            log("Error at MainController " + e.toString());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+            e.printStackTrace();
         }
     }
 
