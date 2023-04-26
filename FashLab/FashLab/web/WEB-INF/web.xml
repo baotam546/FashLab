@@ -27,6 +27,15 @@
         <servlet-name>SearchController</servlet-name>
         <servlet-class>Controller.SearchController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddtocartServlet</servlet-name>
+        <servlet-class>Controller.AddtocartServlet</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>DeleteFromCartServlet</servlet-name>
+        <servlet-class>Controller.DeleteFromCartServlet</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -50,6 +59,15 @@
     <servlet-mapping>
         <servlet-name>SearchController</servlet-name>
         <url-pattern>/SearchController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddtocartServlet</servlet-name>
+        <url-pattern>/AddtocartServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>DeleteFromCartServlet</servlet-name>
+        <url-pattern>/DeleteFromCartServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

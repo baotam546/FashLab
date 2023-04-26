@@ -12,14 +12,15 @@ import java.sql.Date;
  * @author ACER
  */
 public class Product {
-    int id;
-    String name;
-    int categoryId;
-    double price;
-    int discountId;
-    Date createdAt;
-    int quantity;
-    String link;
+
+    private int id;
+    private String name;
+    private int categoryId;
+    private double price;
+    private int discountId;
+    private Date createdAt;
+    private int quantity;
+    private String link;
 
     public String getLink() {
         return link;
@@ -32,7 +33,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String name, int categoryId, double price, int discountId, Date createdAt, int quantity,String link) {
+    public Product(int id, String name, int categoryId, double price, int discountId, Date createdAt, int quantity, String link) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
@@ -40,8 +41,34 @@ public class Product {
         this.discountId = discountId;
         this.createdAt = createdAt;
         this.quantity = quantity;
-        this.link=link;
+        this.link = link;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 13 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product other = (Product) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
 
     public int getId() {
         return id;
@@ -86,6 +113,7 @@ public class Product {
     public Date getCreatedAt() {
         return createdAt;
     }
+    
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
@@ -98,5 +126,5 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
+
 }

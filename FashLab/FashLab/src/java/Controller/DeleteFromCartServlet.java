@@ -7,21 +7,26 @@ package Controller;
 
 import DAO.CategoryDAO;
 import DAO.ProductDAO;
+
 import DTO.Category;
+
+import DTO.Cart;
+
 import DTO.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ACER
+ * @author luong
  */
-public class SearchController extends HttpServlet {
+public class DeleteFromCartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,14 +40,23 @@ public class SearchController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String txt= request.getParameter("txt");
-        
-        List<Product> productList = ProductDAO.getAllProductsBySearch(txt);
-        CategoryDAO categoryDao = new CategoryDAO();
-        List<Category> categoryList = categoryDao.getCategoryList();
-        request.setAttribute("productList", productList);
-                request.setAttribute("categoryList", categoryList);
-                request.getRequestDispatcher("AllItems.jsp").forward(request, response);
+
+       String URL = "cart.jsp";
+        try{
+        int id = Integer.parseInt(request.getParameter("id"));
+        HttpSession session = request.getSession();
+        Cart cart = (Cart) session.getAttribute("cart");
+        if (cart == null){
+            cart = new Cart(session.getId());
+        }
+            cart.deleteFromCart(id);
+            session.setAttribute("cart", cart);
+        }
+     finally {
+     RequestDispatcher rd = request.getRequestDispatcher(URL);
+     rd.forward(request, response);
+}
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
