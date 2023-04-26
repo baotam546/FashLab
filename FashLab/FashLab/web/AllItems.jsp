@@ -103,21 +103,19 @@
 
 
             </div>
+              
             <div class="row" data-aos="fade-up">
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
                   <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
+                    <c:forEach  begin="1" end="${endP}" step="1" var="i">
+                        <li class=""><a href="ListProduct?index=${i}"><span>${i}</span></a></li>
+                    </c:forEach> 
                   </ul>
                 </div>
               </div>
             </div>
+              
           </div>
 
           <div class="col-md-3 order-1 mb-5 mb-md-0">

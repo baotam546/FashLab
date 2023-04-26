@@ -10,6 +10,7 @@ import DAO.ProductDAO;
 import DTO.Category;
 import DTO.Product;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ACER
  */
-public class HomePageController extends HttpServlet {
+public class ListProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,21 +35,28 @@ public class HomePageController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String indexPage = request.getParameter("index");
         
-        String action = request.getParameter("action");
+        if(indexPage == null){
+            indexPage ="1";
+        }
+        int index = Integer.parseInt(indexPage);
+        int count = ProductDAO.getTotalProduct();
+        int endPage = count/10;
+        if(count % 9 != 0 ){   
+            endPage++;
+        }
+        request.setAttribute("endP", endPage);
         
+        List<Product> productList = ProductDAO.pagingProduct(index);
+        request.setAttribute("productList", productList);
         
-                
-        if(action.equals("Shop")){   
-                request.getRequestDispatcher("/ListProduct").forward(request, response);
-        }
-        else 
-            if(action.equals("Home")){
-            request.getRequestDispatcher("HomePage.jsp").forward(request, response);
-        }
-        else if(action.equals("LogIn")){
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+       
+        List<Category> categoryList = CategoryDAO.getCategoryList();
+        request.setAttribute("categoryList", categoryList);
+        
+        request.getRequestDispatcher("AllItems.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

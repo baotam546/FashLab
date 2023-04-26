@@ -164,9 +164,29 @@ public class ProductDAO {
         }
         return 0;
     }
+    public static List<Product> pagingProduct(int index){
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT  p1.id,p1.name,p1.categoryId, p1.price , p1.discountId,p1.createdAt,p1.quantity,p2.link" +
+                     "  FROM Product p1  left join ProductsPhoto p2 on p1.id = p2.userId ORDER BY p1.id OFFSET ? ROW FETCH NEXT 9 ROWS ONLY";
+        try {
+            Connection con = DBUtils.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            int input = (index -1)*9;
+            ps.setInt(1, input);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Product(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), rs.getInt(5), rs.getDate(6), rs.getInt(7),rs.getString(8)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
     
     public static void main(String[] args) {
-
+        List<Product> list = ProductDAO.pagingProduct(1);
+        for (Product product : list) {
+            System.out.println(product);
+        }
 
     }
 }
