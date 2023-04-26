@@ -100,7 +100,7 @@ public class ProductDAO {
     public static List<Product> getAllProductsBySearch(String txt) {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT  p1.id,p1.name,p1.categoryId, p1.price , p1.discountId,p1.createdAt,p1.quantity,p2.link" +
-                     "  FROM Product p1  left join ProductsPhoto p2 on p1.id = p2.userId WHERE name like  ";
+                     "  FROM Product p1  left join ProductsPhoto p2 on p1.id = p2.userId WHERE name like  ?";
         Connection cn = null;
         try {
             Connection con = DBUtils.getConnection();
@@ -115,10 +115,23 @@ public class ProductDAO {
         }
         return list;
 }
+    public static int getTotalProduct(){
+        
+        String sql = "Select count(*) from Product";
+        try {
+             Connection con = DBUtils.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            return rs.getInt(1);}
+        } catch (Exception e) {
+        }
+        return 0;
+    }
     
     public static void main(String[] args) {
-        
-        List<Product> list = ProductDAO.getAllProducts();
+        System.out.println(ProductDAO.getTotalProduct());
+        List<Product> list = ProductDAO.getAllProductsBySearch("1");
         for (Product product : list) {
             System.out.println(product);
         }

@@ -3,7 +3,6 @@
     <welcome-file-list>
         <welcome-file>HomePage.jsp</welcome-file>
     </welcome-file-list>
-    
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>Controller.LoginServlet</servlet-class>
@@ -13,7 +12,6 @@
         <servlet-class>Controller.HomePageController</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>DetailsItemsController</servlet-name>
         <servlet-class>Controller.DetailsItemsController</servlet-class>
     </servlet>
@@ -22,16 +20,13 @@
         <servlet-class>Controller.CategoryController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SearchController</servlet-name>
-        <servlet-class>Controller.SearchController</servlet-class>
-
         <servlet-name>CreateAccountServlet</servlet-name>
         <servlet-class>Controller.CreateAccountServlet</servlet-class>
-
-
-
     </servlet>
-    
+    <servlet>
+        <servlet-name>SearchController</servlet-name>
+        <servlet-class>Controller.SearchController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -41,7 +36,6 @@
         <url-pattern>/HomePageController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>DetailsItemsController</servlet-name>
         <url-pattern>/DetailsItemsController</url-pattern>
     </servlet-mapping>
@@ -50,12 +44,12 @@
         <url-pattern>/CategoryController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SearchController</servlet-name>
-        <url-pattern>/SearchController</url-pattern>
-
         <servlet-name>CreateAccountServlet</servlet-name>
         <url-pattern>/CreateAccountServlet</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchController</servlet-name>
+        <url-pattern>/SearchController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

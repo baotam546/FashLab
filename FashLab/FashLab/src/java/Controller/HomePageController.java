@@ -48,6 +48,12 @@ public class HomePageController extends HttpServlet {
                 request.setAttribute("categoryList", categoryList);
                 request.getRequestDispatcher("AllItems.jsp").forward(request, response);
         }
+        else if(action.equals("Home")){
+            request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+        }
+        else if(action.equals("LogIn")){
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -6,7 +6,9 @@ package Controller;
  * and open the template in the editor.
  */
 
+import DAO.CategoryDAO;
 import DAO.ProductDAO;
+import DTO.Category;
 import DTO.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -36,6 +38,8 @@ public class CategoryController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         int id = Integer.parseInt(request.getParameter("cid"));
         List<Product> list = ProductDAO.getAllProductsByCategory(id);
+        List<Category> cateList = CategoryDAO.getCategoryList();
+        request.setAttribute("categoryList", cateList);
         request.setAttribute("productList", list);
         request.getRequestDispatcher("AllItems.jsp").forward(request, response);
     }
